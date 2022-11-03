@@ -138,6 +138,9 @@ async function getModule(id){
 
 
 telebot.launch();
+app.get("/",(req,res)=>{
+    res.send("EduBot Server is Live")
+});
 app.listen(port,()=>{
     console.log("Server started");
 })
