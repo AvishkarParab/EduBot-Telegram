@@ -1,8 +1,11 @@
 const { Telegraf } = require('telegraf');
 const axios = require("axios");
 require('dotenv').config();
+const express = require("express")
+var app = express()
 
 const telebot = new Telegraf(process.env.TOKEN);
+const port = process.env.PORT || 5000
 
 
 telebot.start((ctx) => ctx.reply('Welcome to CARES GOA chatbot :)'));
@@ -135,3 +138,6 @@ async function getModule(id){
 
 
 telebot.launch();
+app.listen(port,()=>{
+    console.log("Server started");
+})
