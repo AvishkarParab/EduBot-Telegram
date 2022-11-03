@@ -1,8 +1,5 @@
-const TelegramBot = require('node-telegram-bot-api');
 const { Telegraf } = require('telegraf');
 const axios = require("axios");
-const Routes = require("./routes")
-require("./db/connection")
 require('dotenv').config();
 
 const telebot = new Telegraf(process.env.TOKEN);
@@ -103,82 +100,12 @@ telebot.action('Scratch',async(ctx)=>{
     else{
         ctx.telegram.sendMessage(ctx.chat.id ,"No Course Module Found")
     }
-    // let data = await getData(ctx.match);
-    // ctx.telegram.sendMessage(ctx.chat.id,data,
-    // {
-    //     reply_markup:{
-    //         inline_keyboard:[
-    //             [
-    //                 {text:"Back",callback_data:"menu"},
 
-    //             ]
-    //         ]
-    //     }
-    // }
-
-    // ); 
-});
-
-
-
-
-telebot.action('MH',async(ctx)=>{
-    // ctx.deleteMessage()
-    let data = await getData(ctx.match);
-    ctx.telegram.sendMessage(ctx.chat.id,data,
-    {
-        reply_markup:{
-            inline_keyboard:[
-                [
-                    {text:"Back",callback_data:"menu"},
-
-                ]
-            ]
-        }
-    }
-
-    ); 
-});
-telebot.action('KA',async(ctx)=>{
-    // ctx.deleteMessage()
-    let data = await getData(ctx.match);
-    ctx.telegram.sendMessage(ctx.chat.id,data,
-    {
-        reply_markup:{
-            inline_keyboard:[
-                [
-                    {text:"Back",callback_data:"menu"},
-
-                ]
-            ]
-        }
-    }
-
-    ); 
-});
-
-
-telebot.action('menu',ctx=>{
-    // ctx.deleteMessage();
-    ctx.telegram.sendMessage(ctx.chat.id,"Helloo Noob",
-    {
-        reply_markup:{
-            inline_keyboard:[
-                [
-                    {text:"GOA",callback_data:"GA"},
-                    {text:"MAHARASHTRA",callback_data:"MH"},
-                    {text:"KARNATAKA",callback_data:"KA"},
-                ]
-            ]
-        }
-    }
-
-    ); 
 });
 
 
 async function getCourses(){
-    let url = "http://localhost:5000/course";
+    let url = "https://bot.creativeknox.com/course";
     try {
         const resp = await axios.get(url);
 
@@ -193,7 +120,7 @@ async function getCourses(){
 
 
 async function getModule(id){
-    let url = `http://localhost:5000/module/?cid=${id}`;
+    let url = `https://bot.creativeknox.com/module/?cid=${id}`;
     try {
         const resp = await axios.get(url);
 
