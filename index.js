@@ -46,7 +46,7 @@ telebot.action('Scratch',async(ctx)=>{
             if(moduleResponse[i].mtype === "video")
             ctx.telegram.sendVideo(ctx.chat.id ,"http://techslides.com/demos/sample-videos/small.mp4")
             else
-            ctx.telegram.sendPhoto(ctx.chat.id,"https://images.pexels.com/photos/268533/pexels-photo-268533.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500")
+            ctx.telegram.sendPhoto(ctx.chat.id,moduleResponse[i].image)
             ctx.telegram.sendMessage(ctx.chat.id ,moduleResponse[i].question,{
             reply_markup:{
                 inline_keyboard:[
@@ -63,7 +63,7 @@ telebot.action('Scratch',async(ctx)=>{
                 if(moduleResponse[i].mtype === "video")
                 ctx.telegram.sendVideo(ctx.chat.id ,"http://techslides.com/demos/sample-videos/small.mp4")
                 else
-                ctx.telegram.sendPhoto(ctx.chat.id,"https://images.pexels.com/photos/268533/pexels-photo-268533.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500")
+                ctx.telegram.sendPhoto(ctx.chat.id,moduleResponse[i].image)
             ctx.telegram.sendMessage(ctx.chat.id ,moduleResponse[i].question,{
             reply_markup:{
                 inline_keyboard:[
